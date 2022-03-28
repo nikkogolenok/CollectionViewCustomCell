@@ -23,9 +23,13 @@ class ViewController: UIViewController {
     func createDelegate() {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
+        layout.minimumLineSpacing = 1
+        layout.minimumInteritemSpacing = 1
+        layout.itemSize = CGSize(width: (view.frame.width/3)-4,
+                                 height: (view.frame.width/3)-4)
         collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         guard let collectionView = collectionView else { return }
-        collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "cell")
+        collectionView.register(CustomCollectionViewCell.self, forCellWithReuseIdentifier: CustomCollectionViewCell.identifier)
         collectionView.delegate = self
         collectionView.dataSource = self
         view.addSubview(collectionView)
